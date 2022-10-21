@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Col, Container, Row, Card } from 'react-bootstrap';
@@ -9,28 +9,12 @@ import { AllAction } from '../../../redux/Action';
 import Form from '../../../components/Form';
 import FormInput from '../../../components/FormInput';
 
-class LoginPage extends React.Component {
+class LoginPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: '',
-    };
   }
 
-  componentDidMount() {
-    let userDetail = this.props.loginState.userDetails;
-    if (userDetail) {
-      this.setState({
-        email: this.props.loginState.userDetails.email,
-      });
-    }
-  }
-
-  handleSubmit = async (data) => {
-    if (data) {
-      this.props.loginUser(data);
-    }
-  };
+  handleSubmit = (data) => this.props.loginUser(data);
 
   render() {
     const { appData: { userDetails } = {} } = this.props;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
@@ -9,18 +9,12 @@ import { AllAction } from '../../../redux';
 import Form from '../../../components/Form';
 import FormInput from '../../../components/FormInput';
 
-class SignUp extends React.Component {
+class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loading: false,
-      token: null,
-    };
   }
 
-  handleUserRegistration = async (data) => {
-    this.props.signUpUser(data);
-  };
+  handleUserRegistration = (data) => this.props.signUpUser(data);
 
   render() {
     return (
